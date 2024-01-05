@@ -5,17 +5,18 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rh.photo.mapper.MemberMapper;
+import com.rh.photo.mapper.StoryMapper;
 
 @Service
-public class MemberServiceImpl implements MemberService {
+public class StoryServiceImpl implements StoryService {
+	
 	@Autowired
-	private MemberMapper memberMapper;
+	private StoryMapper storyMapper;
 
 	@Override
-	public int insertMember(HashMap<String, String> paraMap) {
+	public HashMap<String, Object> getStoryList() {
 		// TODO Auto-generated method stub
-		return memberMapper.insertMember(paraMap);
+		return storyMapper.getStoryList();
 	}
-	
+
 }
