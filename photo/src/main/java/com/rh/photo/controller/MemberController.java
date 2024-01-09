@@ -67,7 +67,7 @@ public class MemberController {
 			
 			session.setMaxInactiveInterval(1800);
 			
-			// System.out.println("세션값 : " + session.getAttribute("userSession"));
+			log.info("세션값 : " + session.getAttribute("userSession"));
 			
 			return ResponseEntity.ok("login success");
 			

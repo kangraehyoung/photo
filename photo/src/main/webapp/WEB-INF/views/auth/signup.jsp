@@ -13,7 +13,7 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-function join() {
+function memberInsert() {
     var userId = document.querySelector(".username").value;
     var email = document.querySelector(".email").value;
     var name = document.querySelector(".name").value;
@@ -30,6 +30,7 @@ function join() {
         url: "/member/insert",
         success: function (data) {
             console.log("success");
+            location.href = '/auth/signin'
         },
         error: function (data) {
             console.log("fail");
@@ -55,7 +56,7 @@ function join() {
                             <input type="password" class="password" name="password" placeholder="패스워드" required="required" />
                             <input type="email" class="email" name="email" placeholder="이메일" required="required" />
                             <input type="text" class="name" name="name" placeholder="이름" required="required" />
-                            <button onclick="join()">가입</button>
+                            <button onclick="memberInsert()">가입</button>
                         </form>
                         <!--회원가입 인풋end-->
                     </div>

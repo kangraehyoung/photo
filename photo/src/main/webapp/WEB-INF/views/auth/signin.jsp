@@ -11,7 +11,30 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+function login(){
+	var userId = document.querySelector(".username").value;
+    var password = document.querySelector(".password").value;
 
+    $.ajax({
+        type: 'POST',
+        async: false,
+        data: {
+            userId: userId,
+            password: password
+        },
+        url: "/member/login",
+        success: function (data) {
+            console.log("success");
+            location.href = '/image/story';
+        },
+        error: function (data) {
+            console.log("fail");
+        }
+    });
+}
+</script>
 <body>
     <div class="container">
         <main class="loginMain">
@@ -24,11 +47,11 @@
                         <h1><img src="/images/logo.jpg" alt=""></h1>
                         
                         <!--로그인 인풋-->
-                        <form class="login__input" >
-                            <input type="text" name="username" placeholder="유저네임" required="required" />
-                            <input type="password" name="password" placeholder="비밀번호" required="required" />
-                            <button>로그인</button>
-                        </form>
+                        <!-- <form class="login__input" > -->
+                            <input type="text" class="username" name="username" placeholder="유저네임" required="required" />
+                            <input type="password" class="password" name="password" placeholder="비밀번호" required="required" />
+                            <button onclick="login()">로그인</button>
+                        <!-- </form> -->
                         <!--로그인 인풋end-->
                         
                         <!-- 또는 -->
