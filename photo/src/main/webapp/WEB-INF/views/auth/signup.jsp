@@ -13,21 +13,28 @@
 </head>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script type="text/javascript">
-function join(){
-	$.ajax({
-		  type : 'POST',
-		  data: {userId: document.querySelector("input[name=username]").innerText, 
-			     email: document.querySelector("input[name=email]").innerText,
-				 name: document.querySelector("input[name=name]").innerText,
-				 password: document.querySelector("input[name=password]").innerText},
-		  url : "/member/insert",
-		  success: function(data) {
-		    console.log("success");
-		  },
-		  error: function(data) {
-		    console.log("fail");
-		  }
-		});
+function join() {
+    var userId = document.querySelector(".username").value;
+    var email = document.querySelector(".email").value;
+    var name = document.querySelector(".name").value;
+    var password = document.querySelector(".password").value;
+
+    $.ajax({
+        type: 'POST',
+        data: {
+            userId: userId,
+            email: email,
+            name: name,
+            password: password
+        },
+        url: "/member/insert",
+        success: function (data) {
+            console.log("success");
+        },
+        error: function (data) {
+            console.log("fail");
+        }
+    });
 }
 </script>
 <body>
@@ -44,10 +51,10 @@ function join(){
                          <!--로고end-->
                          <!--회원가입 인풋-->
                          <form class="login__input" >
-                            <input type="text" name="username" placeholder="유저네임" required="required" />
-                            <input type="password" name="password" placeholder="패스워드" required="required" />
-                            <input type="email" name="email" placeholder="이메일" required="required" />
-                            <input type="text" name="name" placeholder="이름" required="required" />
+                            <input type="text" class="username" name="username" placeholder="유저네임" required="required" />
+                            <input type="password" class="password" name="password" placeholder="패스워드" required="required" />
+                            <input type="email" class="email" name="email" placeholder="이메일" required="required" />
+                            <input type="text" class="name" name="name" placeholder="이름" required="required" />
                             <button onclick="join()">가입</button>
                         </form>
                         <!--회원가입 인풋end-->
