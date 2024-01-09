@@ -7,6 +7,9 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.logging.Log;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,8 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
+	private final Logger log = LoggerFactory.getLogger(getClass());
+	
 	// 회원가입
 	@PostMapping("/member/insert")
 	@ResponseBody
@@ -33,7 +38,7 @@ public class MemberController {
 		paraMap.put("email", email);
 		paraMap.put("name", name);
 		
-		System.out.println("para : " + paraMap);
+		log.info("param : " + paraMap);
 		
 		int result = memberService.insertMember(paraMap);
 		
