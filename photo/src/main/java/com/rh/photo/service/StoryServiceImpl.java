@@ -19,4 +19,10 @@ public class StoryServiceImpl implements StoryService {
 		return storyMapper.getStoryList();
 	}
 
+	@Override
+	public HashMap<String, String> getStoryInfoByNo(HashMap<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return storyMapper.getStoryInfoByNo(paraMap);
+	}
+
 }
