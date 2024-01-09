@@ -5,7 +5,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.rh.photo.mapper.MemberMapper;
+import com.rh.photo.dao.MemberMapper;
 
 @Service
 public class MemberServiceImpl implements MemberService {
