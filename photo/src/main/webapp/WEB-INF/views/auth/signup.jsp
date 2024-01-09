@@ -11,7 +11,25 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript">
+function join(){
+	$.ajax({
+		  type : 'POST',
+		  data: {userId: document.querySelector("input[name=username]").innerText, 
+			     email: document.querySelector("input[name=email]").innerText,
+				 name: document.querySelector("input[name=name]").innerText,
+				 password: document.querySelector("input[name=password]").innerText},
+		  url : "/member/insert",
+		  success: function(data) {
+		    console.log("success");
+		  },
+		  error: function(data) {
+		    console.log("fail");
+		  }
+		});
+}
+</script>
 <body>
     <div class="container">
         <main class="loginMain">
@@ -24,14 +42,13 @@
                         <!--로고-->
                         <h1><img src="/images/logo.jpg" alt=""></h1>
                          <!--로고end-->
-                         
                          <!--회원가입 인풋-->
-                        <form class="login__input" >
+                         <form class="login__input" >
                             <input type="text" name="username" placeholder="유저네임" required="required" />
                             <input type="password" name="password" placeholder="패스워드" required="required" />
                             <input type="email" name="email" placeholder="이메일" required="required" />
                             <input type="text" name="name" placeholder="이름" required="required" />
-                            <button>가입</button>
+                            <button onclick="join()">가입</button>
                         </form>
                         <!--회원가입 인풋end-->
                     </div>
