@@ -31,11 +31,13 @@ public class MemberController {
 	@PostMapping("/member/insert")
 	@ResponseBody
 	public ResponseEntity<?> insertMember(@RequestParam String userId, @RequestParam String password, @RequestParam String email, @RequestParam String name){
+		
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		
 		paraMap.put("userId", userId);
 		paraMap.put("password", password);
 		paraMap.put("email", email);
+		
 		paraMap.put("name", name);
 		
 		log.info("param : " + paraMap);
@@ -47,12 +49,14 @@ public class MemberController {
 		} else {
 			return ResponseEntity.badRequest().body("fail");
 		}
+		
 	}
 	
 	// 로그인 
 	@PostMapping("/member/login")
 	@ResponseBody
 	public ResponseEntity<?> memberLogin(@RequestParam String userId, @RequestParam String password, HttpSession session){
+		
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		
 		paraMap.put("userId", userId);
@@ -70,7 +74,6 @@ public class MemberController {
 			log.info("세션값 : " + session.getAttribute("userSession"));
 			
 			return ResponseEntity.ok("login success");
-			
 		}else {
 			return ResponseEntity.badRequest().body("login fail");
 		}

@@ -1,6 +1,7 @@
 package com.rh.photo.service;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +24,12 @@ public class StoryServiceImpl implements StoryService {
 	public HashMap<String, String> getStoryInfoByNo(HashMap<String, String> paraMap) {
 		// TODO Auto-generated method stub
 		return storyMapper.getStoryInfoByNo(paraMap);
+	}
+
+	@Override
+	public List<String> getAutoCompleteSearchWord(HashMap<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return storyMapper.getAutoCompleteSearchWord(paraMap);
 	}
 
 }
