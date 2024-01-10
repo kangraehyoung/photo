@@ -14,10 +14,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpClientErrorException.BadRequest;
 
 import com.rh.photo.service.MemberService;
+import com.rh.photo.vo.MemberVo;
 
 @Controller
 public class MemberController {
@@ -65,6 +68,7 @@ public class MemberController {
 		int result = memberService.memberExistChk(paraMap);
 		
 		if (result > 0) {
+			
 			HashMap<String, String> memberInfoMap = memberService.getMemberById(paraMap);
 			
 			session.setAttribute("userSession", memberInfoMap);
@@ -95,6 +99,29 @@ public class MemberController {
 			return ResponseEntity.ok("delete seccess");
 		}else {
 			return ResponseEntity.badRequest().body("delete fail");
+		}
+		
+	}
+	
+	// 회원 정보 수정 
+	@PostMapping("/member/updateinfo")
+	@ResponseBody
+	public ResponseEntity<?> updateUserInfo(@RequestParam String email, @RequestParam String name, @RequestParam String password, HttpServletRequest request){
+		
+		HashMap<String, String> paraMap = new HashMap<String, String>();
+		MemberVo memberVo = (MemberVo) request.getSession().getAttribute("userSession");
+		
+		paraMap.put("no", String.valueOf(memberVo.getNo()));
+		paraMap.put("email", email);
+		paraMap.put("name", name);
+		paraMap.put("password", password);
+		
+		int result = memberService.updateUserInfo(paraMap);
+		
+		if (result > 0) {
+			return ResponseEntity.ok("userInfo update success");
+		}else {
+			return ResponseEntity.badRequest().body("fail");
 		}
 		
 	}

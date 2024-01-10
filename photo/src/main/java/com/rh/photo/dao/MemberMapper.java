@@ -16,4 +16,6 @@ public interface MemberMapper {
 
 	int deleteMemberByNo(HashMap<String, String> sessionMap);
 
+	int updateUserInfo(HashMap<String, String> paraMap);
+
 }

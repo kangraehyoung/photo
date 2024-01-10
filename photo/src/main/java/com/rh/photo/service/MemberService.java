@@ -13,4 +13,6 @@ public interface MemberService {
 
 	int deleteMemberByNo(HashMap<String, String> sessionMap);
 
+	int updateUserInfo(HashMap<String, String> paraMap);
+
 }

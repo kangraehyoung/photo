@@ -36,5 +36,11 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		return memberMapper.deleteMemberByNo(sessionMap);
 	}
+
+	@Override
+	public int updateUserInfo(HashMap<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return memberMapper.updateUserInfo(paraMap);
+	}
 	
 }
