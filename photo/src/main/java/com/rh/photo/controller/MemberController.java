@@ -34,14 +34,20 @@ public class MemberController {
 	// 회원가입
 	@PostMapping("/member/insert")
 	@ResponseBody
-	public ResponseEntity<?> insertMember(@RequestParam String userId, @RequestParam String password, @RequestParam String email, @RequestParam String name){
+	public ResponseEntity<?> insertMember(@RequestParam String userId, @RequestParam String password, @RequestParam String name){
 		
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		
+		ValidationConfig val = new ValidationConfig(userId, password);
+		
+		if (val.validateEmailAndPassword(userId, password)) {
+			log.info("아이디, 비밀번호 유효성 체크 통과");
+		}else {
+			return ResponseEntity.badRequest().body(val.getErrors());
+		}
+		
 		paraMap.put("userId", userId);
 		paraMap.put("password", password);
-		paraMap.put("email", email);
-		
 		paraMap.put("name", name);
 		
 		log.info("param : " + paraMap);
@@ -65,7 +71,7 @@ public class MemberController {
 		
 		ValidationConfig val = new ValidationConfig(userId, password);
 		
-		if (val.validateEmailAndPassword(userId, password) == true) {
+		if (val.validateEmailAndPassword(userId, password)) {
 			log.info("아이디, 비밀번호 유효성 체크 통과");
 		}else {
 			return ResponseEntity.badRequest().body(val.getErrors());

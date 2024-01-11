@@ -8,18 +8,14 @@ public class MainController {
 
 	@GetMapping("/")
 	public String main() {
-		return "main/main";
+		return "main/index";
 	}
 
-	@GetMapping("/auth/signup")
+	@GetMapping("/signup")
 	public String signupPage() {
-		return "auth/signup";
+		return "main/signup";
 	}
 
-	@GetMapping("/auth/signin")
-	public String signinPage() {
-		return "auth/signin";
-	}
 
 	@GetMapping("/image/story")
 	public String storyPage() {
@@ -49,6 +45,11 @@ public class MainController {
 	@GetMapping("/signin")
 	public String signin() {
 		return "main/index";
+	}
+	
+	@GetMapping("/listPage")
+	public String listPage() {
+		return "main/main";
 	}
 
 	/*

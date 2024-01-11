@@ -6,31 +6,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photogram</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Instagram</title>
+    <link href='https://fonts.googleapis.com/css?family=Lobster' rel='stylesheet'>
+    <link rel="stylesheet" href="style/signup.css">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
-function memberInsert() {
-    var userId = document.querySelector(".username").value;
-    var email = document.querySelector(".email").value;
-    var name = document.querySelector(".name").value;
+function join(){
+	var userId = document.querySelector(".username").value;
     var password = document.querySelector(".password").value;
+    var nickname = document.querySelector(".nickname").value;
+    
+    console.log(userId);
+    console.log(password);
+    console.log(nickname);
 
     $.ajax({
         type: 'POST',
+        async: false,
         data: {
             userId: userId,
-            email: email,
-            name: name,
-            password: password
+            password: password,
+            name: nickname
         },
         url: "/member/insert",
         success: function (data) {
-            console.log("success");
-            location.href = '/auth/signin'
+        console.log("success");
+            location.href = '/signin';
         },
         error: function (data) {
             console.log("fail");
@@ -48,16 +52,16 @@ function memberInsert() {
                    <!--회원가입 폼-->
                     <div class="login__form">
                         <!--로고-->
-                        <h1><img src="/images/logo.jpg" alt=""></h1>
+                        <h1>Raestagram</h1>
                          <!--로고end-->
+                         
                          <!--회원가입 인풋-->
-                         <form class="login__input" >
-                            <input type="text" class="username" name="username" placeholder="유저네임" required="required" />
+                        <div class="login__input">
+                            <input type="text" class="username" name="username" placeholder="유저네임" required="required"  maxlength="30"/>
                             <input type="password" class="password" name="password" placeholder="패스워드" required="required" />
-                            <input type="email" class="email" name="email" placeholder="이메일" required="required" />
-                            <input type="text" class="name" name="name" placeholder="이름" required="required" />
-                            <button onclick="memberInsert()">가입</button>
-                        </form>
+                            <input type="text" class="nickname" name="name" placeholder="이름" required="required" />
+                            <button onclick="join()">가입</button>
+                        </div>
                         <!--회원가입 인풋end-->
                     </div>
                     <!--회원가입 폼end-->

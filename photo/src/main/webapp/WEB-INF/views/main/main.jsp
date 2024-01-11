@@ -13,6 +13,7 @@
 </head>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2314a715468c61dc634e28e6e5bd139f&libraries=services"></script>
+	<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
   	// 카카오지도 주소 가져오는 함수
    	function getAddr(lat,lng){

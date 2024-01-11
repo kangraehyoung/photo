@@ -49,17 +49,16 @@ const pwValidation = function () {
   }
 };
 
-const submitLogin = function (e) {
+/*const submitLogin = function (e) {
   e.preventDefault();
   if (checkId === true && checkPw === true) {
     $inputId.value = "";
     $inputPw.value = "";
-    location.href = "./main.html";
   }
-};
+};*/
 
 $inputId.addEventListener("keyup", checkLength);
 $inputPw.addEventListener("keyup", checkLength);
 $inputId.addEventListener("change", idValidation);
 $inputPw.addEventListener("change", pwValidation);
-$btnLogin.addEventListener("click", submitLogin);
+//$btnLogin.addEventListener("click", submitLogin);

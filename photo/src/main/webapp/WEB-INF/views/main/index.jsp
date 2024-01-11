@@ -11,9 +11,10 @@
 <link rel="stylesheet" href="style/common.css" />
 <link rel="stylesheet" href="style/login.css" />
 </head>
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
 <script type="text/javascript">
 function login(){
-	var userId = document.querySelector(".username").value;
+	var userId = document.querySelector(".userId").value;
     var password = document.querySelector(".password").value;
 
     $.ajax({
@@ -25,8 +26,8 @@ function login(){
         },
         url: "/member/login",
         success: function (data) {
-        console.log("success");
-            location.href = '';
+	        console.log("success");
+	        location.href = 'http://localhost:8080/listPage';
         },
         error: function (data) {
             console.log("fail");
@@ -37,11 +38,11 @@ function login(){
 <body>
 	<div class="box-all">
 		<h1 class="text-title">Raestagram</h1>
-		<form class="form-login">
+		<div class="form-login">
 			<input id="input-id" class="userId" type="text" placeholder="전화번호, 사용자 이름 또는 이메일" />
 			<input id="input-pw" class="password" type="password" placeholder="비밀번호" />
 			<button id="btn-login" onclick="login()" disabled="true">로그인</button>
-		</form>
+		</div>
 		<p class="message-emailError">*이메일 형식을 다시 확인해주세요.</p>
 		<p class="message-pwError">*비밀번호가 5글자 이상인지 확인해주세요.</p>
 		<p class="message-forgetPw">비밀번호를 잊으셨나요?</p>
