@@ -26,7 +26,7 @@ function login(){
         },
         url: "/member/login",
         success: function (data) {
-            console.log("success");
+        console.log("success");
             location.href = '/image/story';
         },
         error: function (data) {

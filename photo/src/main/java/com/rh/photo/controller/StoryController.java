@@ -47,6 +47,8 @@ public class StoryController {
 		
 		HashMap<String, String> paraMap = new HashMap<String, String>();
 		
+		
+		
 		return ResponseEntity.ok("success");
 	}
 	

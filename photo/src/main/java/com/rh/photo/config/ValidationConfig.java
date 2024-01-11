@@ -15,17 +15,17 @@ public class ValidationConfig {
     public void validatePassword() {
         if (!containsUppercase()) {
             isValid = false;
-            errors.append("비밀번호에 영어 대문자가 포함되어야 합니다.\n");
+            errors.append("비밀번호에 영어 대문자가 포함되어야 합니다.");
         }
 
         if (!containsLowercase()) {
             isValid = false;
-            errors.append("비밀번호에 영어 소문자가 포함되어야 합니다.\n");
+            errors.append("비밀번호에 영어 소문자가 포함되어야 합니다.");
         }
 
         if (!containsSpecialCharacter()) {
             isValid = false;
-            errors.append("비밀번호에 특수문자가 포함되어야 합니다.\n");
+            errors.append("비밀번호에 특수문자가 포함되어야 합니다.");
         }
     }
 
