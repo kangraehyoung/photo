@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.HttpClientErrorException.BadRequest;
 
+import com.rh.photo.config.ValidationConfig;
 import com.rh.photo.service.MemberService;
 import com.rh.photo.vo.MemberVo;
 
@@ -61,6 +62,14 @@ public class MemberController {
 	public ResponseEntity<?> memberLogin(@RequestParam String userId, @RequestParam String password, HttpSession session){
 		
 		HashMap<String, String> paraMap = new HashMap<String, String>();
+		
+		ValidationConfig val = new ValidationConfig(userId, password);
+		
+		if (val.validateEmailAndPassword(userId, password) == true) {
+			log.info("정상적 로그인");
+		}else {
+			log.info(val.getErrors());
+		}
 		
 		paraMap.put("userId", userId);
 		paraMap.put("password", password);

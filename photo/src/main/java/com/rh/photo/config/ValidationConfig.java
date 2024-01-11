@@ -2,17 +2,24 @@ package com.rh.photo.config;
 
 public class ValidationConfig {
 	
+	private String email;
 	private String password;
     private boolean isValid;
     private StringBuilder errors;
 
-    public ValidationConfig(String password) {
+    public ValidationConfig(String email, String password) {
+    	this.email = email;
         this.password = password;
         this.isValid = true;
         this.errors = new StringBuilder();
     }
 
-    public void validatePassword() {
+    public boolean validateEmailAndPassword(String email, String password) {
+    	if (!containsEmail()) {
+    		isValid = false;
+    		errors.append("아이디가 이메일 형식이어야 합니다..");
+		}
+    	
         if (!containsUppercase()) {
             isValid = false;
             errors.append("비밀번호에 영어 대문자가 포함되어야 합니다.");
@@ -27,7 +34,9 @@ public class ValidationConfig {
             isValid = false;
             errors.append("비밀번호에 특수문자가 포함되어야 합니다.");
         }
+		return isValid;
     }
+    
 
     private boolean containsUppercase() {
         return password.matches(".*[A-Z].*");
@@ -40,7 +49,11 @@ public class ValidationConfig {
     private boolean containsSpecialCharacter() {
         return password.matches(".*[!@#$%^&*(),.?\":{}|<>].*");
     }
-
+    
+    private boolean containsEmail() {
+    	return email.matches("^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$");
+    }
+    
     public boolean isValid() {
         return isValid;
     }
