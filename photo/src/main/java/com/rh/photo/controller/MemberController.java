@@ -66,9 +66,9 @@ public class MemberController {
 		ValidationConfig val = new ValidationConfig(userId, password);
 		
 		if (val.validateEmailAndPassword(userId, password) == true) {
-			log.info("정상적 로그인");
+			log.info("아이디, 비밀번호 유효성 체크 통과");
 		}else {
-			log.info(val.getErrors());
+			return ResponseEntity.badRequest().body(val.getErrors());
 		}
 		
 		paraMap.put("userId", userId);
