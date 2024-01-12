@@ -120,7 +120,7 @@
 			</div>
 			<div id="addressResult"></div>
 			<div>
-				<article class="box-feed">
+				<article class="box-feed" id="box-feed">
 					<div class="head-feed">
 						<div class="profile-feed">
 							<img class="img-profile-32px" src="src/img/profile/apple.jpg"
@@ -224,10 +224,45 @@
 	        	
 	        console.log(data);
 	        
-	        //let rhtml = "";
-            /* rhtml += "<p class='name-story'>City: " + city + "</p><p class='name-story'>Town: " + town + "</p>";
+	        let rhtml = "";
+	        
+	        for(let i = 0; i < data.length; i++){
             
-            document.getElementById("test").innerHTML += rhtml; */
+            rhtml += "<div class='head-feed'>"
+			+	"	<div class='profile-feed'>"
+			+	"		<img class='img-profile-32px' src='src/img/profile/apple.jpg'"
+			+	"			alt='프로필 이미지' />"
+			+	"		<div>"
+			+	"			<p class='userName-feed'>apple_01</p>"
+			+	"			<p class='location-feed'>Seoul, Kroea</p>"
+			+	"		</div>"
+			+	"	</div>"
+			+	"	<img class='icon-more' src='src/icon/more.png' alt='더보기 아이콘' />"
+			+	"</div>"
+			+	"			<img class='img-feed' src='src/img/feed/apple.jpg' alt='피드 이미지' />"
+			+	"			<div class='icon-feed'>"
+			+	"				<div>"
+			+	"					<img class='img-icon' src='src/icon/heart.png' alt='하트 아이콘' /> <img"
+			+	"						class='img-icon' src='src/icon/chat.png' alt='댓글 아이콘' /> <img"
+			+	"						class='img-icon' src='src/icon/send.png' alt='다이렉트 메시지 아이콘' />"
+			+	"				</div>"
+			+	"				<img class='img-icon' src='src/icon/bookmark.png' alt='북마크 아이콘' />"
+			+	"			</div>"
+			+	"			<p class='text-like'>좋아요 120개</p>"
+			+	"			<div class='box-comment'></div>"
+			+	"			<div class='box-chat'>"
+			+	"				<img class='img-icon' src='src/icon/smile.png' alt='이모지 아이콘' />"
+			+	"				<form>"
+			+	"					<input class='input-chat' type='text' placeholder='댓글 달기...' />"
+			+	"					<button class='btn-chat' type='submit'>게시</button>"
+			+	"				</form>"
+			+	"			</div>";
+	        }
+	        
+            document.getElementById("box-feed").innerHTML += rhtml;
+            
+            
+            
 	        },
 	        error: function (data) {
 	            console.log("fail");
