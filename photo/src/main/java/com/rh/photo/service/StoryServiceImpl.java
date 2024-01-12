@@ -32,4 +32,10 @@ public class StoryServiceImpl implements StoryService {
 		return storyMapper.getAutoCompleteSearchWord(paraMap);
 	}
 
+	@Override
+	public int insertStory(HashMap<String, String> paraMap) {
+		// TODO Auto-generated method stub
+		return storyMapper.insertStory(paraMap);
+	}
+
 }

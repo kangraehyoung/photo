@@ -9,15 +9,15 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class MemberVo {
 	
-	private int no;
+	private int memberNo;
 	
-	private String userId;
+	private String memberId;
 	
 	private String password;
 	
 	private String email;
 	
-	private String userName;
+	private String memberNickName;
 	
 	private String createDate;
 	

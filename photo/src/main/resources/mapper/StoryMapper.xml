@@ -4,4 +4,9 @@
 	<select id="selectTest" resultType="string">
 		select 'test'
 	</select>
+	
+	<insert id="insertStory" parameterType="HashMap">
+	insert into story(story_writer_nickname, member_no, story_title, story_content, story_city, story_town) 
+	values(#{memberNickName}, #{memberNo}, #{title}, #{content}, #{city}, #{town})
+	</insert>
 </mapper>

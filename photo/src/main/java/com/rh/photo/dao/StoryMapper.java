@@ -14,4 +14,6 @@ public interface StoryMapper {
 
 	List<String> getAutoCompleteSearchWord(HashMap<String, String> paraMap);
 
+	int insertStory(HashMap<String, String> paraMap);
+
 }

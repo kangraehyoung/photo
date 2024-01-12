@@ -2,18 +2,18 @@
 
 <mapper namespace="com.rh.photo.dao.MemberMapper">
 	<insert id="insertMember" parameterType="HashMap">
-	insert into member(name, id, password) values (#{name}, #{userId}, #{password})
+	insert into member(member_nickname, member_id, member_password) values (#{name}, #{userId}, #{password})
 	</insert>
 	
 	<select id="memberExistChk" parameterType="HashMap" resultType="_int">
-	select exists (select no from member where id = #{userId} and password = #{password})
+	select exists (select member_no from member where member_id = #{userId} and member_password = #{password})
 	</select>
 	
 	<select id="getMemberById" parameterType="HashMap" resultType="HashMap">
-	select no, id, email, name from member where id = #{userId}
+	select member_no, member_id, member_nickname from member where member_id = #{userId}
 	</select>
 	
 	<delete id="deleteMemberByNo" parameterType="HashMap">
-	delete from member where no = #{no}
+	delete from member where member_no = #{no}
 	</delete>
 </mapper>
