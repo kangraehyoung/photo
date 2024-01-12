@@ -56,6 +56,8 @@
 	}
 	
 	getLocation();
+	
+	
   </script>
 <body>
 	<header>
@@ -209,5 +211,29 @@
 	</main>
 
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+	getStoryList()
+	function getStoryList(){
+		$.ajax({
+	        type: 'GET',
+	        data: {
+	            
+	        },
+	        url: "/story/list",
+	        success: function (data) {
+	        	
+	        console.log(data);
+	        
+	        //let rhtml = "";
+            /* rhtml += "<p class='name-story'>City: " + city + "</p><p class='name-story'>Town: " + town + "</p>";
+            
+            document.getElementById("test").innerHTML += rhtml; */
+	        },
+	        error: function (data) {
+	            console.log("fail");
+	        }
+	    });
+	}
+	</script>
 </body>
 </html>

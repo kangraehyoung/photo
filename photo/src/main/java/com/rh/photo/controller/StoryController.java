@@ -37,6 +37,7 @@ public class StoryController {
 		Optional<HashMap<String, Object>> storyList = Optional.ofNullable(storyService.getStoryList());
 
 		if (storyList != null) {
+			log.info("Story List : " + storyList.get().toString());
 			return ResponseEntity.ok(storyList.get());
 		} else {
 			return ResponseEntity.badRequest().body("empty");
